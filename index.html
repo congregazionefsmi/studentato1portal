@@ -3,16 +3,18 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#092a63">
+  <meta name="theme-color" content="#071b3d">
   <title>Studentato 1 · Porto Fiumicino 2026</title>
   <style>
     :root {
-      --navy: #082452;
-      --blue: #104f9e;
-      --sky: #a8d9ff;
-      --gold: #f2d596;
-      --white: #f8fbff;
-      --muted: #b6cae4;
+      --night: #071a38;
+      --blue: #0d3978;
+      --blue-mid: #1458a6;
+      --ice: #c5e3ff;
+      --gold: #edcf8f;
+      --text: #f5f8ff;
+      --muted: #b4c9e2;
+      --line: rgba(211, 231, 255, .2);
     }
 
     * { box-sizing: border-box; }
@@ -20,227 +22,287 @@
     body {
       min-height: 100vh;
       margin: 0;
-      padding: 38px 22px;
+      padding: 32px 22px;
       overflow-x: hidden;
-      color: var(--white);
+      color: var(--text);
       font-family: Inter, "Segoe UI", system-ui, sans-serif;
       background:
-        radial-gradient(ellipse at 80% 8%, rgba(84, 160, 236, .35), transparent 32rem),
-        radial-gradient(ellipse at 12% 85%, rgba(39, 104, 190, .24), transparent 30rem),
-        linear-gradient(145deg, #071b3d, #0b3474 58%, #092653);
+        radial-gradient(ellipse at 88% 8%, rgba(65, 143, 225, .32), transparent 30rem),
+        radial-gradient(ellipse at 4% 96%, rgba(43, 99, 173, .26), transparent 32rem),
+        linear-gradient(140deg, #06152e, #0c3470 55%, #071c3c);
     }
 
     body::before {
       position: fixed;
       inset: 0;
-      pointer-events: none;
+      z-index: -1;
       content: "";
-      opacity: .18;
-      background-image: radial-gradient(#d8ebff 1px, transparent 1px);
-      background-size: 34px 34px;
-      mask-image: linear-gradient(to bottom, black, transparent 80%);
+      opacity: .12;
+      pointer-events: none;
+      background-image: radial-gradient(rgba(221, 239, 255, .9) .7px, transparent .7px);
+      background-size: 23px 23px;
+      mask-image: linear-gradient(135deg, black, transparent 72%);
     }
 
-    main {
-      position: relative;
-      width: min(100%, 1080px);
-      margin: 0 auto;
-    }
+    main { width: min(100%, 1100px); margin: 0 auto; }
 
-    header {
-      min-height: 300px;
-      padding: 36px 0 42px;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-    }
-
-    .kicker {
+    .masthead {
       display: flex;
       align-items: center;
-      gap: 12px;
-      margin: 0 0 22px;
-      color: var(--sky);
+      justify-content: space-between;
+      gap: 14px;
+      padding: 5px 0 20px;
+      color: var(--muted);
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .17em;
+      text-transform: uppercase;
+    }
+
+    .masthead span:last-child {
+      color: var(--ice);
+      letter-spacing: .12em;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 310px;
+      padding: clamp(28px, 6vw, 62px);
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+      background:
+        linear-gradient(105deg, rgba(7, 26, 56, .94) 5%, rgba(12, 52, 112, .72) 66%, rgba(24, 89, 158, .58)),
+        radial-gradient(circle at 87% 48%, rgba(171, 219, 255, .22), transparent 17rem);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      box-shadow: 0 28px 90px rgba(0, 11, 32, .24);
+    }
+
+    .hero::before {
+      position: absolute;
+      width: 370px;
+      height: 370px;
+      top: -145px;
+      right: -60px;
+      content: "";
+      border: 1px solid rgba(206, 232, 255, .2);
+      border-radius: 50%;
+      box-shadow: 0 0 0 30px rgba(206, 232, 255, .035),
+                  0 0 0 62px rgba(206, 232, 255, .03),
+                  0 0 0 96px rgba(206, 232, 255, .025);
+    }
+
+    .hero::after {
+      position: absolute;
+      width: 7px;
+      height: 75%;
+      right: 0;
+      bottom: 0;
+      content: "";
+      background: linear-gradient(transparent, var(--gold), transparent);
+      opacity: .8;
+    }
+
+    .hero-copy { position: relative; z-index: 1; }
+
+    .eyebrow {
+      margin: 0 0 20px;
+      color: var(--ice);
       font-size: .76rem;
+      font-weight: 750;
+      letter-spacing: .21em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(3.5rem, 10vw, 7.4rem);
+      font-weight: 400;
+      line-height: .78;
+      letter-spacing: -.07em;
+    }
+
+    h1 .number {
+      color: var(--gold);
+      font-size: 1.15em;
+      font-style: italic;
+    }
+
+    .hero-meta {
+      margin: 26px 0 0;
+      color: #d3e1f4;
+      font-size: .95rem;
+      letter-spacing: .04em;
+    }
+
+    .hero-meta span { color: var(--gold); padding: 0 8px; }
+
+    .hero-index {
+      position: absolute;
+      right: 7%;
+      bottom: 14%;
+      z-index: 1;
+      color: rgba(230, 244, 255, .13);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(8rem, 24vw, 17rem);
+      line-height: .75;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .section-bar {
+      margin: 32px 2px 15px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .section-bar h2 {
+      margin: 0;
+      color: #e1efff;
+      font-size: .73rem;
       font-weight: 750;
       letter-spacing: .2em;
       text-transform: uppercase;
     }
 
-    .kicker::before {
-      width: 34px;
-      height: 1px;
-      content: "";
-      background: var(--gold);
-    }
-
-    h1 {
-      max-width: 800px;
-      margin: 0;
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(3.2rem, 9vw, 7rem);
-      font-weight: 400;
-      line-height: .91;
-      letter-spacing: -.055em;
-    }
-
-    h1 span {
-      display: block;
-      color: var(--sky);
-      font-style: italic;
-    }
-
-    .location {
-      margin: 24px 0 0;
+    .section-bar span {
       color: var(--muted);
-      font-size: .95rem;
-      letter-spacing: .06em;
+      font-size: .78rem;
     }
 
-    .location b {
-      margin: 0 9px;
-      color: var(--gold);
-      font-weight: 400;
-    }
-
-    .section-heading {
-      margin: 0 0 15px;
-      color: #dceafe;
-      font-size: .74rem;
-      font-weight: 700;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-    }
-
-    .links {
+    .resources {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: repeat(6, minmax(0, 1fr));
       gap: 13px;
     }
 
     .card {
       position: relative;
-      min-height: 142px;
-      padding: 22px 23px;
+      grid-column: span 2;
+      min-height: 180px;
+      padding: 20px;
       display: flex;
-      align-items: center;
-      gap: 18px;
+      flex-direction: column;
+      justify-content: space-between;
       overflow: hidden;
-      color: inherit;
+      color: var(--text);
       text-decoration: none;
-      background: linear-gradient(135deg, rgba(255,255,255,.12), rgba(255,255,255,.055));
-      border: 1px solid rgba(214, 234, 255, .2);
-      border-radius: 18px;
-      backdrop-filter: blur(12px);
+      background: linear-gradient(145deg, rgba(255,255,255,.11), rgba(255,255,255,.045));
+      border: 1px solid var(--line);
+      border-radius: 19px;
+      backdrop-filter: blur(10px);
       transition: transform .2s ease, border-color .2s ease, background .2s ease;
     }
 
+    .card:nth-child(1), .card:nth-child(2) { grid-column: span 3; }
+
     .card::after {
       position: absolute;
-      width: 110px;
-      height: 110px;
-      right: -50px;
-      bottom: -65px;
+      width: 120px;
+      height: 120px;
+      right: -40px;
+      bottom: -70px;
       content: "";
-      border: 1px solid rgba(168, 217, 255, .16);
+      border: 1px solid rgba(197, 227, 255, .19);
       border-radius: 50%;
-      box-shadow: 0 0 0 14px rgba(168, 217, 255, .035),
-                  0 0 0 29px rgba(168, 217, 255, .025);
-      transition: transform .25s ease;
+      box-shadow: 0 0 0 16px rgba(197, 227, 255, .035),
+                  0 0 0 34px rgba(197, 227, 255, .025);
+      transition: transform .24s ease;
     }
 
     .card:hover {
       transform: translateY(-4px);
-      background: linear-gradient(135deg, rgba(255,255,255,.18), rgba(255,255,255,.08));
-      border-color: rgba(168, 217, 255, .55);
+      background: linear-gradient(145deg, rgba(255,255,255,.17), rgba(255,255,255,.07));
+      border-color: rgba(197, 227, 255, .55);
     }
 
-    .card:hover::after { transform: scale(1.16); }
+    .card:hover::after { transform: scale(1.2); }
 
-    .icon {
-      flex: 0 0 48px;
-      width: 48px;
-      height: 48px;
-      display: grid;
-      place-items: center;
+    .card-top, .card-bottom {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .card-num {
       color: var(--gold);
-      background: rgba(242, 213, 150, .1);
-      border: 1px solid rgba(242, 213, 150, .25);
-      border-radius: 15px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1rem;
+      font-style: italic;
     }
 
-    .icon svg {
-      width: 23px;
-      height: 23px;
-      fill: none;
-      stroke: currentColor;
-      stroke-width: 1.6;
-      stroke-linecap: round;
-      stroke-linejoin: round;
+    .card-arrow {
+      color: var(--ice);
+      font-size: 1.15rem;
+      transition: transform .2s ease;
     }
 
-    .card-copy { min-width: 0; }
+    .card:hover .card-arrow { transform: translate(3px, -3px); }
 
     .card-title {
       display: block;
       font-family: Georgia, "Times New Roman", serif;
-      font-size: 1.32rem;
-      line-height: 1.2;
+      font-size: clamp(1.25rem, 3vw, 1.65rem);
+      line-height: 1.1;
     }
 
     .card-detail {
       display: block;
-      margin-top: 7px;
+      margin-top: 8px;
       color: var(--muted);
       font-size: .82rem;
       line-height: 1.45;
     }
 
-    .arrow {
-      z-index: 1;
-      flex: 0 0 auto;
-      margin-left: auto;
-      align-self: flex-start;
-      color: var(--sky);
-      font-size: 1.15rem;
-    }
-
     footer {
-      margin-top: 28px;
-      padding-top: 17px;
+      margin-top: 22px;
+      padding: 16px 2px 0;
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      gap: 16px;
+      align-items: center;
+      gap: 14px;
       color: var(--muted);
-      border-top: 1px solid rgba(214, 234, 255, .16);
-      font-size: .8rem;
+      border-top: 1px solid var(--line);
+      font-size: .78rem;
     }
 
     button {
       padding: 9px 13px;
-      color: var(--white);
-      background: transparent;
-      border: 1px solid rgba(214, 234, 255, .28);
+      color: var(--text);
+      background: rgba(255,255,255,.06);
+      border: 1px solid var(--line);
       border-radius: 999px;
       font: inherit;
       cursor: pointer;
-      transition: background .2s ease;
     }
 
-    button:hover { background: rgba(255,255,255,.1); }
+    button:hover { background: rgba(255,255,255,.13); }
 
     a:focus-visible, button:focus-visible {
       outline: 3px solid var(--gold);
       outline-offset: 4px;
     }
 
-    @media (max-width: 650px) {
-      body { padding: 20px 17px; }
-      header { min-height: 260px; padding-top: 25px; }
-      .links { grid-template-columns: 1fr; }
-      .card { min-height: 112px; padding: 18px; }
-      footer { align-items: flex-start; }
+    @media (max-width: 700px) {
+      body { padding: 18px 15px; }
+      .hero { min-height: 275px; padding: 30px 24px; }
+      .resources { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .card, .card:nth-child(1), .card:nth-child(2) { grid-column: span 1; }
+      .card { min-height: 155px; padding: 16px; }
+    }
+
+    @media (max-width: 420px) {
+      .masthead { font-size: .62rem; }
+      .resources { grid-template-columns: 1fr; }
+      .card, .card:nth-child(1), .card:nth-child(2) { min-height: 120px; }
+      .hero-index { right: 4%; bottom: 12%; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -250,72 +312,68 @@
 </head>
 <body>
   <main>
-    <header>
-      <p class="kicker">Figli di Santa Maria Immacolata</p>
-      <h1>Studentato <span>Uno.</span></h1>
-      <p class="location">Porto Fiumicino <b>✦</b> 2026</p>
+    <div class="masthead">
+      <span>Figli di Santa Maria Immacolata</span>
+      <span>Porto Fiumicino · 2026</span>
+    </div>
+
+    <header class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Studentato</p>
+        <h1>Studentato <span class="number">1</span></h1>
+        <p class="hero-meta">A place for study <span>✦</span> prayer <span>✦</span> community</p>
+      </div>
+      <div class="hero-index" aria-hidden="true">01</div>
     </header>
 
-    <p class="section-heading">Student resources</p>
+    <div class="section-bar">
+      <h2>Student resources</h2>
+      <span>Choose a destination ↘</span>
+    </div>
 
-    <nav class="links" aria-label="Student resources">
+    <nav class="resources" aria-label="Student resources">
       <a class="card" href="https://compendio.congregazionefsmi.workers.dev" target="_blank" rel="noopener noreferrer">
-        <span class="icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M5 4.5h10a3 3 0 0 1 3 3v12H8a3 3 0 0 1-3-3z"/><path d="M5 16.5a3 3 0 0 1 3-3h10M9 8h5M9 10.5h5"/></svg>
-        </span>
-        <span class="card-copy"><span class="card-title">Compendio</span><span class="card-detail">Prayer · Songbook</span></span>
-        <span class="arrow" aria-hidden="true">↗</span>
+        <span class="card-top"><span class="card-num">01</span><span class="card-arrow">↗</span></span>
+        <span class="card-bottom"><span><span class="card-title">Compendio</span><span class="card-detail">Prayer · Songbook</span></span></span>
       </a>
 
       <a class="card" href="https://congregazionefsmi.github.io/orario" target="_blank" rel="noopener noreferrer">
-        <span class="icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3.5 2"/></svg>
-        </span>
-        <span class="card-copy"><span class="card-title">Orario</span><span class="card-detail">Liturgia · Cucina · Assistente · Teologia</span></span>
-        <span class="arrow" aria-hidden="true">↗</span>
+        <span class="card-top"><span class="card-num">02</span><span class="card-arrow">↗</span></span>
+        <span class="card-bottom"><span><span class="card-title">Orario</span><span class="card-detail">Liturgia · Cucina · Assistente · Teologia</span></span></span>
       </a>
 
       <a class="card" href="https://congregazionefsmi.github.io/documentistudenti" target="_blank" rel="noopener noreferrer">
-        <span class="icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M7 3.5h7l4 4v13H7z"/><path d="M14 3.5v4h4M10 12h5M10 15h5"/><path d="M4 7v13"/></svg>
-        </span>
-        <span class="card-copy"><span class="card-title">Documenti Studenti</span><span class="card-detail">Accesso con Google</span></span>
-        <span class="arrow" aria-hidden="true">↗</span>
+        <span class="card-top"><span class="card-num">03</span><span class="card-arrow">↗</span></span>
+        <span class="card-bottom"><span><span class="card-title">Documenti Studenti</span><span class="card-detail">Google Log-in</span></span></span>
       </a>
 
       <a class="card" href="https://shmiphilippines.netlify.app" target="_blank" rel="noopener noreferrer">
-        <span class="icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M3.8 12h16.4M12 3.5a13 13 0 0 1 0 17M12 3.5a13 13 0 0 0 0 17"/></svg>
-        </span>
-        <span class="card-copy"><span class="card-title">SHMI Philippines</span><span class="card-detail">Visit the Philippines portal</span></span>
-        <span class="arrow" aria-hidden="true">↗</span>
+        <span class="card-top"><span class="card-num">04</span><span class="card-arrow">↗</span></span>
+        <span class="card-bottom"><span><span class="card-title">SHMI Philippines</span><span class="card-detail">Visit the Philippines portal</span></span></span>
       </a>
 
       <a class="card" href="https://congregazionefsmi.github.io/dirittocanonico/" target="_blank" rel="noopener noreferrer">
-        <span class="icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M12 3.5v17M7 7h10M8 7l-4 7h8zM16 7l-4 7h8zM8 20h8"/></svg>
-        </span>
-        <span class="card-copy"><span class="card-title">Diritto Canonico</span><span class="card-detail">Canon Law</span></span>
-        <span class="arrow" aria-hidden="true">↗</span>
+        <span class="card-top"><span class="card-num">05</span><span class="card-arrow">↗</span></span>
+        <span class="card-bottom"><span><span class="card-title">Diritto Canonico</span><span class="card-detail">Canon Law</span></span></span>
       </a>
     </nav>
 
     <footer>
-      <span>Porto Fiumicino · Studentato 1</span>
-      <button type="button" id="copyLink">Copy portal link</button>
+      <span>Studentato 1 · Porto Fiumicino</span>
+      <button id="copyLink" type="button">Copy portal link</button>
     </footer>
   </main>
 
   <script>
-    const copyButton = document.getElementById("copyLink");
-    copyButton.addEventListener("click", async () => {
+    const button = document.getElementById("copyLink");
+    button.addEventListener("click", async () => {
       try {
         await navigator.clipboard.writeText(window.location.href);
-        copyButton.textContent = "Link copied";
+        button.textContent = "Link copied";
       } catch {
-        copyButton.textContent = "Copy unavailable";
+        button.textContent = "Copy unavailable";
       }
-      setTimeout(() => copyButton.textContent = "Copy portal link", 1800);
+      setTimeout(() => button.textContent = "Copy portal link", 1800);
     });
   </script>
 </body>

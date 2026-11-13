@@ -1,380 +1,316 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="it">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#071b3d">
-  <title>Studentato 1 · Porto Fiumicino 2026</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Figli di Santa Maria Immacolata – Studentato 1</title>
   <style>
     :root {
-      --night: #071a38;
-      --blue: #0d3978;
-      --blue-mid: #1458a6;
-      --ice: #c5e3ff;
-      --gold: #edcf8f;
-      --text: #f5f8ff;
-      --muted: #b4c9e2;
-      --line: rgba(211, 231, 255, .2);
+      --marian-blue: #1f4e9c;
+      --marian-deep: #0d2a5c;
+      --marian-soft: #e9f1fc;
+      --marian-sky: #5b8fd6;
+      --gold: #c9a227;
+      --text: #1d2b45;
+      --muted: #5a6a85;
+      --white: #ffffff;
+      --shadow: 0 10px 30px rgba(13, 42, 92, 0.12);
     }
 
-    * { box-sizing: border-box; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      min-height: 100vh;
-      margin: 0;
-      padding: 32px 22px;
-      overflow-x: hidden;
+      font-family: "Georgia", "Times New Roman", serif;
       color: var(--text);
-      font-family: Inter, "Segoe UI", system-ui, sans-serif;
-      background:
-        radial-gradient(ellipse at 88% 8%, rgba(65, 143, 225, .32), transparent 30rem),
-        radial-gradient(ellipse at 4% 96%, rgba(43, 99, 173, .26), transparent 32rem),
-        linear-gradient(140deg, #06152e, #0c3470 55%, #071c3c);
+      background: linear-gradient(160deg, #f5f9ff 0%, var(--marian-soft) 100%);
+      min-height: 100vh;
+      line-height: 1.5;
     }
 
-    body::before {
-      position: fixed;
-      inset: 0;
-      z-index: -1;
-      content: "";
-      opacity: .12;
-      pointer-events: none;
-      background-image: radial-gradient(rgba(221, 239, 255, .9) .7px, transparent .7px);
-      background-size: 23px 23px;
-      mask-image: linear-gradient(135deg, black, transparent 72%);
-    }
-
-    main { width: min(100%, 1100px); margin: 0 auto; }
-
-    .masthead {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 14px;
-      padding: 5px 0 20px;
-      color: var(--muted);
-      font-size: .72rem;
-      font-weight: 700;
-      letter-spacing: .17em;
-      text-transform: uppercase;
-    }
-
-    .masthead span:last-child {
-      color: var(--ice);
-      letter-spacing: .12em;
-    }
-
-    .hero {
+    /* ---------- Header ---------- */
+    header {
+      background: linear-gradient(135deg, var(--marian-deep) 0%, var(--marian-blue) 60%, var(--marian-sky) 100%);
+      color: var(--white);
+      text-align: center;
+      padding: 3.5rem 1.5rem 4.5rem;
       position: relative;
-      min-height: 310px;
-      padding: clamp(28px, 6vw, 62px);
-      display: flex;
-      align-items: flex-end;
       overflow: hidden;
-      background:
-        linear-gradient(105deg, rgba(7, 26, 56, .94) 5%, rgba(12, 52, 112, .72) 66%, rgba(24, 89, 158, .58)),
-        radial-gradient(circle at 87% 48%, rgba(171, 219, 255, .22), transparent 17rem);
-      border: 1px solid var(--line);
-      border-radius: 28px;
-      box-shadow: 0 28px 90px rgba(0, 11, 32, .24);
     }
 
-    .hero::before {
-      position: absolute;
-      width: 370px;
-      height: 370px;
-      top: -145px;
-      right: -60px;
+    header::after {
       content: "";
-      border: 1px solid rgba(206, 232, 255, .2);
-      border-radius: 50%;
-      box-shadow: 0 0 0 30px rgba(206, 232, 255, .035),
-                  0 0 0 62px rgba(206, 232, 255, .03),
-                  0 0 0 96px rgba(206, 232, 255, .025);
-    }
-
-    .hero::after {
       position: absolute;
-      width: 7px;
-      height: 75%;
+      bottom: -1px;
+      left: 0;
       right: 0;
-      bottom: 0;
-      content: "";
-      background: linear-gradient(transparent, var(--gold), transparent);
-      opacity: .8;
+      height: 60px;
+      background: var(--marian-soft);
+      clip-path: ellipse(60% 100% at 50% 100%);
     }
 
-    .hero-copy { position: relative; z-index: 1; }
-
-    .eyebrow {
-      margin: 0 0 20px;
-      color: var(--ice);
-      font-size: .76rem;
-      font-weight: 750;
-      letter-spacing: .21em;
-      text-transform: uppercase;
-    }
-
-    h1 {
-      margin: 0;
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(3.5rem, 10vw, 7.4rem);
-      font-weight: 400;
-      line-height: .78;
-      letter-spacing: -.07em;
-    }
-
-    h1 .number {
-      color: var(--gold);
-      font-size: 1.15em;
-      font-style: italic;
-    }
-
-    .hero-meta {
-      margin: 26px 0 0;
-      color: #d3e1f4;
-      font-size: .95rem;
-      letter-spacing: .04em;
-    }
-
-    .hero-meta span { color: var(--gold); padding: 0 8px; }
-
-    .hero-index {
-      position: absolute;
-      right: 7%;
-      bottom: 14%;
-      z-index: 1;
-      color: rgba(230, 244, 255, .13);
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(8rem, 24vw, 17rem);
-      line-height: .75;
-      pointer-events: none;
-      user-select: none;
-    }
-
-    .section-bar {
-      margin: 32px 2px 15px;
+    .crest {
+      width: 74px;
+      height: 74px;
+      margin: 0 auto 1rem;
+      border-radius: 50%;
+      border: 2px solid var(--gold);
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 12px;
+      justify-content: center;
+      font-size: 2rem;
+      background: rgba(255, 255, 255, 0.08);
     }
 
-    .section-bar h2 {
-      margin: 0;
-      color: #e1efff;
-      font-size: .73rem;
-      font-weight: 750;
-      letter-spacing: .2em;
+    header h1 {
+      font-size: clamp(1.4rem, 3.5vw, 2.2rem);
+      letter-spacing: 0.08em;
+      font-weight: 700;
       text-transform: uppercase;
     }
 
-    .section-bar span {
-      color: var(--muted);
-      font-size: .78rem;
+    header .subtitle {
+      margin-top: 0.6rem;
+      font-size: 1.05rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #dbe7ff;
     }
 
-    .resources {
-      display: grid;
-      grid-template-columns: repeat(6, minmax(0, 1fr));
-      gap: 13px;
+    header .year {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.35rem 1.1rem;
+      border: 1px solid var(--gold);
+      border-radius: 999px;
+      color: var(--gold);
+      font-size: 0.95rem;
+      letter-spacing: 0.1em;
     }
 
-    .card {
+    /* ---------- Main ---------- */
+    main {
+      max-width: 1100px;
+      margin: -1.5rem auto 0;
+      padding: 0 1.5rem 4rem;
+    }
+
+    .section-title {
+      text-align: center;
+      color: var(--marian-deep);
+      font-size: 1.35rem;
+      margin: 2.5rem 0 1.8rem;
       position: relative;
-      grid-column: span 2;
-      min-height: 180px;
-      padding: 20px;
+    }
+
+    .section-title::after {
+      content: "";
+      display: block;
+      width: 60px;
+      height: 3px;
+      margin: 0.6rem auto 0;
+      background: var(--gold);
+      border-radius: 2px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+
+    /* ---------- Cards ---------- */
+    .card {
+      background: var(--white);
+      border-radius: 18px;
+      padding: 1.8rem 1.6rem 1.6rem;
+      box-shadow: var(--shadow);
+      border-top: 4px solid var(--marian-blue);
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      overflow: hidden;
-      color: var(--text);
-      text-decoration: none;
-      background: linear-gradient(145deg, rgba(255,255,255,.11), rgba(255,255,255,.045));
-      border: 1px solid var(--line);
-      border-radius: 19px;
-      backdrop-filter: blur(10px);
-      transition: transform .2s ease, border-color .2s ease, background .2s ease;
-    }
-
-    .card:nth-child(1), .card:nth-child(2) { grid-column: span 3; }
-
-    .card::after {
-      position: absolute;
-      width: 120px;
-      height: 120px;
-      right: -40px;
-      bottom: -70px;
-      content: "";
-      border: 1px solid rgba(197, 227, 255, .19);
-      border-radius: 50%;
-      box-shadow: 0 0 0 16px rgba(197, 227, 255, .035),
-                  0 0 0 34px rgba(197, 227, 255, .025);
-      transition: transform .24s ease;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
 
     .card:hover {
-      transform: translateY(-4px);
-      background: linear-gradient(145deg, rgba(255,255,255,.17), rgba(255,255,255,.07));
-      border-color: rgba(197, 227, 255, .55);
+      transform: translateY(-5px);
+      box-shadow: 0 16px 40px rgba(13, 42, 92, 0.2);
     }
 
-    .card:hover::after { transform: scale(1.2); }
-
-    .card-top, .card-bottom {
-      position: relative;
-      z-index: 1;
+    .icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      background: var(--marian-soft);
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 12px;
+      justify-content: center;
+      font-size: 1.6rem;
+      margin-bottom: 1rem;
     }
 
-    .card-num {
-      color: var(--gold);
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 1rem;
-      font-style: italic;
+    .card h2 {
+      font-size: 1.2rem;
+      color: var(--marian-deep);
+      margin-bottom: 0.4rem;
     }
 
-    .card-arrow {
-      color: var(--ice);
-      font-size: 1.15rem;
-      transition: transform .2s ease;
-    }
-
-    .card:hover .card-arrow { transform: translate(3px, -3px); }
-
-    .card-title {
-      display: block;
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(1.25rem, 3vw, 1.65rem);
-      line-height: 1.1;
-    }
-
-    .card-detail {
-      display: block;
-      margin-top: 8px;
+    .card p {
       color: var(--muted);
-      font-size: .82rem;
-      line-height: 1.45;
+      font-size: 0.95rem;
+      margin-bottom: 1.2rem;
+      flex-grow: 1;
     }
 
-    footer {
-      margin-top: 22px;
-      padding: 16px 2px 0;
+    .tags {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 14px;
-      color: var(--muted);
-      border-top: 1px solid var(--line);
-      font-size: .78rem;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 1.2rem;
     }
 
-    button {
-      padding: 9px 13px;
-      color: var(--text);
-      background: rgba(255,255,255,.06);
-      border: 1px solid var(--line);
+    .tag {
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.04em;
+      background: var(--marian-soft);
+      color: var(--marian-blue);
+      padding: 0.25rem 0.6rem;
       border-radius: 999px;
-      font: inherit;
-      cursor: pointer;
     }
 
-    button:hover { background: rgba(255,255,255,.13); }
-
-    a:focus-visible, button:focus-visible {
-      outline: 3px solid var(--gold);
-      outline-offset: 4px;
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-decoration: none;
+      color: var(--white);
+      background: linear-gradient(135deg, var(--marian-blue), var(--marian-sky));
+      padding: 0.75rem 1.2rem;
+      border-radius: 10px;
+      transition: background 0.25s ease, transform 0.15s ease;
     }
 
-    @media (max-width: 700px) {
-      body { padding: 18px 15px; }
-      .hero { min-height: 275px; padding: 30px 24px; }
-      .resources { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .card, .card:nth-child(1), .card:nth-child(2) { grid-column: span 1; }
-      .card { min-height: 155px; padding: 16px; }
+    .btn:hover {
+      background: linear-gradient(135deg, var(--marian-deep), var(--marian-blue));
     }
 
-    @media (max-width: 420px) {
-      .masthead { font-size: .62rem; }
-      .resources { grid-template-columns: 1fr; }
-      .card, .card:nth-child(1), .card:nth-child(2) { min-height: 120px; }
-      .hero-index { right: 4%; bottom: 12%; }
+    .btn:active { transform: scale(0.98); }
+
+    .btn .arrow { transition: transform 0.25s ease; }
+    .btn:hover .arrow { transform: translate(3px, -3px); }
+
+    .url {
+      display: block;
+      margin-top: 0.7rem;
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      font-size: 0.75rem;
+      color: var(--muted);
+      word-break: break-all;
+      text-align: center;
     }
 
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { transition: none !important; }
+    /* ---------- Footer ---------- */
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      font-size: 0.85rem;
+      padding: 2rem 1rem;
+      border-top: 1px solid rgba(31, 78, 156, 0.15);
+    }
+
+    footer strong { color: var(--marian-blue); }
+
+    @media (max-width: 480px) {
+      header { padding: 2.5rem 1rem 3.5rem; }
+      .card { padding: 1.4rem 1.2rem; }
     }
   </style>
 </head>
 <body>
+
+  <header>
+    <div class="crest">✠</div>
+    <h1>Figli di Santa Maria Immacolata</h1>
+    <p class="subtitle">Studentato 1</p>
+    <span class="year">Porto Fiumicino 2026</span>
+  </header>
+
   <main>
-    <div class="masthead">
-      <span>Figli di Santa Maria Immacolata</span>
-      <span>Porto Fiumicino · 2026</span>
-    </div>
+    <h2 class="section-title">Risorse / Resources</h2>
 
-    <header class="hero">
-      <div class="hero-copy">
-        <p class="eyebrow">Studentato</p>
-        <h1>Studentato <span class="number">1</span></h1>
-        <p class="hero-meta">A place for study <span>✦</span> prayer <span>✦</span> community</p>
-      </div>
-      <div class="hero-index" aria-hidden="true">01</div>
-    </header>
+    <section class="grid">
 
-    <div class="section-bar">
-      <h2>Student resources</h2>
-      <span>Choose a destination ↘</span>
-    </div>
+      <!-- Compendio -->
+      <article class="card">
+        <div class="icon">🎵</div>
+        <h2>Compendio</h2>
+        <p>Prayer and songbook for community prayer and liturgical singing.</p>
+        <a class="btn" href="https://compendio.congregazionefsmi.workers.dev" target="_blank" rel="noopener noreferrer">
+          Open Compendio <span class="arrow">↗</span>
+        </a>
+        <span class="url">compendio.congregazionefsmi.workers.dev</span>
+      </article>
 
-    <nav class="resources" aria-label="Student resources">
-      <a class="card" href="https://compendio.congregazionefsmi.workers.dev" target="_blank" rel="noopener noreferrer">
-        <span class="card-top"><span class="card-num">01</span><span class="card-arrow">↗</span></span>
-        <span class="card-bottom"><span><span class="card-title">Compendio</span><span class="card-detail">Prayer · Songbook</span></span></span>
-      </a>
+      <!-- Orario -->
+      <article class="card">
+        <div class="icon">🗓️</div>
+        <h2>Orario</h2>
+        <p>Weekly schedules for each area of formation and service.</p>
+        <div class="tags">
+          <span class="tag">Liturgia</span>
+          <span class="tag">Cucina</span>
+          <span class="tag">Assistente</span>
+          <span class="tag">Teologia</span>
+        </div>
+        <a class="btn" href="https://congregazionefsmi.github.io/orario" target="_blank" rel="noopener noreferrer">
+          Open Orario <span class="arrow">↗</span>
+        </a>
+        <span class="url">congregazionefsmi.github.io/orario</span>
+      </article>
 
-      <a class="card" href="https://congregazionefsmi.github.io/orario" target="_blank" rel="noopener noreferrer">
-        <span class="card-top"><span class="card-num">02</span><span class="card-arrow">↗</span></span>
-        <span class="card-bottom"><span><span class="card-title">Orario</span><span class="card-detail">Liturgia · Cucina · Assistente · Teologia</span></span></span>
-      </a>
+      <!-- Documenti Studenti -->
+      <article class="card">
+        <div class="icon">📂</div>
+        <h2>Documenti Studenti</h2>
+        <p>Student documents. Sign in with your Google account to access.</p>
+        <a class="btn" href="https://congregazionefsmi.github.io/documentistudenti" target="_blank" rel="noopener noreferrer">
+          Open Documents <span class="arrow">↗</span>
+        </a>
+        <span class="url">congregazionefsmi.github.io/documentistudenti</span>
+      </article>
 
-      <a class="card" href="https://congregazionefsmi.github.io/documentistudenti" target="_blank" rel="noopener noreferrer">
-        <span class="card-top"><span class="card-num">03</span><span class="card-arrow">↗</span></span>
-        <span class="card-bottom"><span><span class="card-title">Documenti Studenti</span><span class="card-detail">Google Log-in</span></span></span>
-      </a>
+      <!-- SHMI Philippines -->
+      <article class="card">
+        <div class="icon">🌏</div>
+        <h2>SHMI Philippines</h2>
+        <p>Official website of the SHMI Philippines province.</p>
+        <a class="btn" href="https://shmiphilippines.netlify.app" target="_blank" rel="noopener noreferrer">
+          Visit SHMI Philippines <span class="arrow">↗</span>
+        </a>
+        <span class="url">shmiphilippines.netlify.app</span>
+      </article>
 
-      <a class="card" href="https://shmiphilippines.netlify.app" target="_blank" rel="noopener noreferrer">
-        <span class="card-top"><span class="card-num">04</span><span class="card-arrow">↗</span></span>
-        <span class="card-bottom"><span><span class="card-title">SHMI Philippines</span><span class="card-detail">Visit the Philippines portal</span></span></span>
-      </a>
+      <!-- Diritto Canonico -->
+      <article class="card">
+        <div class="icon">⚖️</div>
+        <h2>Diritto Canonico</h2>
+        <p>Canon law materials for study and reference.</p>
+        <a class="btn" href="https://congregazionefsmi.github.io/dirittocanonico/" target="_blank" rel="noopener noreferrer">
+          Open Diritto Canonico <span class="arrow">↗</span>
+        </a>
+        <span class="url">congregazionefsmi.github.io/dirittocanonico</span>
+      </article>
 
-      <a class="card" href="https://congregazionefsmi.github.io/dirittocanonico/" target="_blank" rel="noopener noreferrer">
-        <span class="card-top"><span class="card-num">05</span><span class="card-arrow">↗</span></span>
-        <span class="card-bottom"><span><span class="card-title">Diritto Canonico</span><span class="card-detail">Canon Law</span></span></span>
-      </a>
-    </nav>
-
-    <footer>
-      <span>Studentato 1 · Porto Fiumicino</span>
-      <button id="copyLink" type="button">Copy portal link</button>
-    </footer>
+    </section>
   </main>
 
-  <script>
-    const button = document.getElementById("copyLink");
-    button.addEventListener("click", async () => {
-      try {
-        await navigator.clipboard.writeText(window.location.href);
-        button.textContent = "Link copied";
-      } catch {
-        button.textContent = "Copy unavailable";
-      }
-      setTimeout(() => button.textContent = "Copy portal link", 1800);
-    });
-  </script>
+  <footer>
+    <p><strong>Figli di Santa Maria Immacolata</strong> · Studentato 1 · Porto Fiumicino 2026</p>
+  </footer>
+
 </body>
 </html>

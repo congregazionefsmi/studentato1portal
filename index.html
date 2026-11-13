@@ -3,18 +3,16 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#173f78">
-  <title>Studentato 1 — Porto Fiumicino 2026</title>
+  <meta name="theme-color" content="#092a63">
+  <title>Studentato 1 · Porto Fiumicino 2026</title>
   <style>
     :root {
-      color-scheme: light;
-      --blue: #173f78;
-      --blue-deep: #102d56;
-      --blue-soft: #eaf1fa;
-      --ink: #17263a;
-      --muted: #64748b;
-      --paper: #ffffff;
-      --line: #e2eaf4;
+      --navy: #082452;
+      --blue: #104f9e;
+      --sky: #a8d9ff;
+      --gold: #f2d596;
+      --white: #f8fbff;
+      --muted: #b6cae4;
     }
 
     * { box-sizing: border-box; }
@@ -22,217 +20,302 @@
     body {
       min-height: 100vh;
       margin: 0;
-      padding: 48px 20px;
-      display: grid;
-      place-items: center;
+      padding: 38px 22px;
+      overflow-x: hidden;
+      color: var(--white);
+      font-family: Inter, "Segoe UI", system-ui, sans-serif;
       background:
-        radial-gradient(ellipse at 50% 0%, #dce9f8 0, transparent 55%),
-        #f4f7fb;
-      color: var(--ink);
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
-        "Segoe UI", sans-serif;
+        radial-gradient(ellipse at 80% 8%, rgba(84, 160, 236, .35), transparent 32rem),
+        radial-gradient(ellipse at 12% 85%, rgba(39, 104, 190, .24), transparent 30rem),
+        linear-gradient(145deg, #071b3d, #0b3474 58%, #092653);
+    }
+
+    body::before {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      content: "";
+      opacity: .18;
+      background-image: radial-gradient(#d8ebff 1px, transparent 1px);
+      background-size: 34px 34px;
+      mask-image: linear-gradient(to bottom, black, transparent 80%);
     }
 
     main {
-      width: min(100%, 680px);
-      padding: clamp(28px, 6vw, 54px);
-      background: var(--paper);
-      border: 1px solid rgba(23, 63, 120, .09);
-      border-radius: 24px;
-      box-shadow: 0 24px 70px rgba(25, 52, 89, .11);
+      position: relative;
+      width: min(100%, 1080px);
+      margin: 0 auto;
     }
 
-    .eyebrow {
-      margin: 0 0 12px;
-      color: var(--blue);
-      font-size: .74rem;
+    header {
+      min-height: 300px;
+      padding: 36px 0 42px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+
+    .kicker {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 0 0 22px;
+      color: var(--sky);
+      font-size: .76rem;
       font-weight: 750;
-      letter-spacing: .16em;
+      letter-spacing: .2em;
       text-transform: uppercase;
     }
 
-    h1 {
-      margin: 0;
-      color: var(--blue-deep);
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(1.75rem, 5vw, 2.6rem);
-      font-weight: 500;
-      line-height: 1.12;
-      letter-spacing: .015em;
-    }
-
-    .subtitle {
-      margin: 12px 0 0;
-      color: var(--muted);
-      font-size: 1rem;
-    }
-
-    .divider {
+    .kicker::before {
+      width: 34px;
       height: 1px;
-      margin: 30px 0 22px;
-      background: var(--line);
+      content: "";
+      background: var(--gold);
+    }
+
+    h1 {
+      max-width: 800px;
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(3.2rem, 9vw, 7rem);
+      font-weight: 400;
+      line-height: .91;
+      letter-spacing: -.055em;
+    }
+
+    h1 span {
+      display: block;
+      color: var(--sky);
+      font-style: italic;
+    }
+
+    .location {
+      margin: 24px 0 0;
+      color: var(--muted);
+      font-size: .95rem;
+      letter-spacing: .06em;
+    }
+
+    .location b {
+      margin: 0 9px;
+      color: var(--gold);
+      font-weight: 400;
+    }
+
+    .section-heading {
+      margin: 0 0 15px;
+      color: #dceafe;
+      font-size: .74rem;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
     }
 
     .links {
       display: grid;
-      gap: 12px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 13px;
     }
 
-    .portal-link {
-      min-height: 72px;
-      padding: 15px 17px;
+    .card {
+      position: relative;
+      min-height: 142px;
+      padding: 22px 23px;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      overflow: hidden;
+      color: inherit;
+      text-decoration: none;
+      background: linear-gradient(135deg, rgba(255,255,255,.12), rgba(255,255,255,.055));
+      border: 1px solid rgba(214, 234, 255, .2);
+      border-radius: 18px;
+      backdrop-filter: blur(12px);
+      transition: transform .2s ease, border-color .2s ease, background .2s ease;
+    }
+
+    .card::after {
+      position: absolute;
+      width: 110px;
+      height: 110px;
+      right: -50px;
+      bottom: -65px;
+      content: "";
+      border: 1px solid rgba(168, 217, 255, .16);
+      border-radius: 50%;
+      box-shadow: 0 0 0 14px rgba(168, 217, 255, .035),
+                  0 0 0 29px rgba(168, 217, 255, .025);
+      transition: transform .25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      background: linear-gradient(135deg, rgba(255,255,255,.18), rgba(255,255,255,.08));
+      border-color: rgba(168, 217, 255, .55);
+    }
+
+    .card:hover::after { transform: scale(1.16); }
+
+    .icon {
+      flex: 0 0 48px;
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      color: var(--gold);
+      background: rgba(242, 213, 150, .1);
+      border: 1px solid rgba(242, 213, 150, .25);
+      border-radius: 15px;
+    }
+
+    .icon svg {
+      width: 23px;
+      height: 23px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.6;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .card-copy { min-width: 0; }
+
+    .card-title {
+      display: block;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.32rem;
+      line-height: 1.2;
+    }
+
+    .card-detail {
+      display: block;
+      margin-top: 7px;
+      color: var(--muted);
+      font-size: .82rem;
+      line-height: 1.45;
+    }
+
+    .arrow {
+      z-index: 1;
+      flex: 0 0 auto;
+      margin-left: auto;
+      align-self: flex-start;
+      color: var(--sky);
+      font-size: 1.15rem;
+    }
+
+    footer {
+      margin-top: 28px;
+      padding-top: 17px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 16px;
-      color: inherit;
-      text-decoration: none;
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      transition: border-color .18s ease, background .18s ease, transform .18s ease;
-    }
-
-    .portal-link:hover {
-      transform: translateY(-2px);
-      background: #f8faff;
-      border-color: #b8cbe4;
-    }
-
-    .portal-link:focus-visible,
-    .copy-link:focus-visible {
-      outline: 3px solid #8eb6e9;
-      outline-offset: 3px;
-    }
-
-    .link-title {
-      display: block;
-      color: var(--blue-deep);
-      font-weight: 700;
-      line-height: 1.35;
-    }
-
-    .link-detail {
-      display: block;
-      margin-top: 4px;
       color: var(--muted);
-      font-size: .83rem;
-      line-height: 1.4;
+      border-top: 1px solid rgba(214, 234, 255, .16);
+      font-size: .8rem;
     }
 
-    .arrow {
-      flex: 0 0 auto;
-      color: var(--blue);
-      font-size: 1.2rem;
-    }
-
-    .footer {
-      margin: 22px 0 0;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      color: var(--muted);
-      font-size: .82rem;
-    }
-
-    .copy-link {
-      padding: 8px 11px;
-      color: var(--blue);
-      background: var(--blue-soft);
-      border: 0;
-      border-radius: 9px;
+    button {
+      padding: 9px 13px;
+      color: var(--white);
+      background: transparent;
+      border: 1px solid rgba(214, 234, 255, .28);
+      border-radius: 999px;
       font: inherit;
-      font-weight: 650;
       cursor: pointer;
+      transition: background .2s ease;
     }
 
-    .copy-link:hover { background: #dce8f7; }
+    button:hover { background: rgba(255,255,255,.1); }
+
+    a:focus-visible, button:focus-visible {
+      outline: 3px solid var(--gold);
+      outline-offset: 4px;
+    }
+
+    @media (max-width: 650px) {
+      body { padding: 20px 17px; }
+      header { min-height: 260px; padding-top: 25px; }
+      .links { grid-template-columns: 1fr; }
+      .card { min-height: 112px; padding: 18px; }
+      footer { align-items: flex-start; }
+    }
 
     @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        scroll-behavior: auto !important;
-        transition-duration: .01ms !important;
-      }
+      *, *::before, *::after { transition: none !important; }
     }
   </style>
 </head>
 <body>
   <main>
-    <p class="eyebrow">Figli di Santa Maria Immacolata</p>
-    <h1>Studentato 1</h1>
-    <p class="subtitle">Porto Fiumicino 2026</p>
+    <header>
+      <p class="kicker">Figli di Santa Maria Immacolata</p>
+      <h1>Studentato <span>Uno.</span></h1>
+      <p class="location">Porto Fiumicino <b>✦</b> 2026</p>
+    </header>
 
-    <div class="divider" aria-hidden="true"></div>
+    <p class="section-heading">Student resources</p>
 
-    <nav class="links" aria-label="Student portal links">
-      <a class="portal-link"
-         href="https://compendio.congregazionefsmi.workers.dev"
-         target="_blank" rel="noopener noreferrer">
-        <span>
-          <span class="link-title">Compendio</span>
-          <span class="link-detail">Prayer-Songbook</span>
+    <nav class="links" aria-label="Student resources">
+      <a class="card" href="https://compendio.congregazionefsmi.workers.dev" target="_blank" rel="noopener noreferrer">
+        <span class="icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M5 4.5h10a3 3 0 0 1 3 3v12H8a3 3 0 0 1-3-3z"/><path d="M5 16.5a3 3 0 0 1 3-3h10M9 8h5M9 10.5h5"/></svg>
         </span>
+        <span class="card-copy"><span class="card-title">Compendio</span><span class="card-detail">Prayer · Songbook</span></span>
         <span class="arrow" aria-hidden="true">↗</span>
       </a>
 
-      <a class="portal-link"
-         href="https://congregazionefsmi.github.io/orario"
-         target="_blank" rel="noopener noreferrer">
-        <span>
-          <span class="link-title">Orario</span>
-          <span class="link-detail">Liturgia · Cucina · Assistente · Teologia</span>
+      <a class="card" href="https://congregazionefsmi.github.io/orario" target="_blank" rel="noopener noreferrer">
+        <span class="icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3.5 2"/></svg>
         </span>
+        <span class="card-copy"><span class="card-title">Orario</span><span class="card-detail">Liturgia · Cucina · Assistente · Teologia</span></span>
         <span class="arrow" aria-hidden="true">↗</span>
       </a>
 
-      <a class="portal-link"
-         href="https://congregazionefsmi.github.io/documentistudenti"
-         target="_blank" rel="noopener noreferrer">
-        <span>
-          <span class="link-title">Documenti Studenti</span>
-          <span class="link-detail">Google Log-in</span>
+      <a class="card" href="https://congregazionefsmi.github.io/documentistudenti" target="_blank" rel="noopener noreferrer">
+        <span class="icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M7 3.5h7l4 4v13H7z"/><path d="M14 3.5v4h4M10 12h5M10 15h5"/><path d="M4 7v13"/></svg>
         </span>
+        <span class="card-copy"><span class="card-title">Documenti Studenti</span><span class="card-detail">Accesso con Google</span></span>
         <span class="arrow" aria-hidden="true">↗</span>
       </a>
 
-      <a class="portal-link"
-         href="https://shmiphilippines.netlify.app"
-         target="_blank" rel="noopener noreferrer">
-        <span>
-          <span class="link-title">SHMI Philippines</span>
-          <span class="link-detail">Visit the Philippines portal</span>
+      <a class="card" href="https://shmiphilippines.netlify.app" target="_blank" rel="noopener noreferrer">
+        <span class="icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M3.8 12h16.4M12 3.5a13 13 0 0 1 0 17M12 3.5a13 13 0 0 0 0 17"/></svg>
         </span>
+        <span class="card-copy"><span class="card-title">SHMI Philippines</span><span class="card-detail">Visit the Philippines portal</span></span>
         <span class="arrow" aria-hidden="true">↗</span>
       </a>
 
-      <a class="portal-link"
-         href="https://congregazionefsmi.github.io/dirittocanonico/"
-         target="_blank" rel="noopener noreferrer">
-        <span>
-          <span class="link-title">Diritto Canonico</span>
-          <span class="link-detail">Canon Law</span>
+      <a class="card" href="https://congregazionefsmi.github.io/dirittocanonico/" target="_blank" rel="noopener noreferrer">
+        <span class="icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 3.5v17M7 7h10M8 7l-4 7h8zM16 7l-4 7h8zM8 20h8"/></svg>
         </span>
+        <span class="card-copy"><span class="card-title">Diritto Canonico</span><span class="card-detail">Canon Law</span></span>
         <span class="arrow" aria-hidden="true">↗</span>
       </a>
     </nav>
 
-    <div class="footer">
-      <span>Studentato 1 · Porto Fiumicino</span>
-      <button class="copy-link" type="button" id="copyLink">Copy portal link</button>
-    </div>
+    <footer>
+      <span>Porto Fiumicino · Studentato 1</span>
+      <button type="button" id="copyLink">Copy portal link</button>
+    </footer>
   </main>
 
   <script>
-    document.getElementById("copyLink").addEventListener("click", async () => {
-      const button = document.getElementById("copyLink");
+    const copyButton = document.getElementById("copyLink");
+    copyButton.addEventListener("click", async () => {
       try {
         await navigator.clipboard.writeText(window.location.href);
-        button.textContent = "Link copied";
-        setTimeout(() => button.textContent = "Copy portal link", 1800);
+        copyButton.textContent = "Link copied";
       } catch {
-        button.textContent = "Copy unavailable";
-        setTimeout(() => button.textContent = "Copy portal link", 1800);
+        copyButton.textContent = "Copy unavailable";
       }
+      setTimeout(() => copyButton.textContent = "Copy portal link", 1800);
     });
   </script>
 </body>

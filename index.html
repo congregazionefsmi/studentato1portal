@@ -1,247 +1,239 @@
-<!DOCTYPE html>
-<html lang="it">
+<!doctype html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FSMI · Studentato 1 · Porto Fiumicino 2026</title>
-  <link rel="preconnect" href="[fonts.googleapis.com](https://fonts.googleapis.com)" />
-  <link href="[fonts.googleapis.com](https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap)" rel="stylesheet" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#173f78">
+  <title>Studentato 1 — Porto Fiumicino 2026</title>
   <style>
     :root {
-      --bg: #0b1426;
-      --bg2: #13213d;
-      --card: rgba(255, 255, 255, 0.05);
-      --card-border: rgba(212, 175, 95, 0.25);
-      --gold: #d4af5f;
-      --gold-light: #f0d898;
-      --text: #eef1f7;
-      --muted: #9aa6bf;
+      color-scheme: light;
+      --blue: #173f78;
+      --blue-deep: #102d56;
+      --blue-soft: #eaf1fa;
+      --ink: #17263a;
+      --muted: #64748b;
+      --paper: #ffffff;
+      --line: #e2eaf4;
     }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * { box-sizing: border-box; }
 
     body {
       min-height: 100vh;
-      font-family: "Inter", system-ui, sans-serif;
-      color: var(--text);
+      margin: 0;
+      padding: 48px 20px;
+      display: grid;
+      place-items: center;
       background:
-        radial-gradient(circle at 20% 10%, rgba(212,175,95,0.12), transparent 40%),
-        radial-gradient(circle at 80% 90%, rgba(80,120,200,0.15), transparent 45%),
-        linear-gradient(160deg, var(--bg), var(--bg2));
-      background-attachment: fixed;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 3.5rem 1.25rem 2rem;
-    }
-
-    header {
-      text-align: center;
-      margin-bottom: 3rem;
-      animation: fadeDown 0.8s ease both;
-    }
-
-    .emblem {
-      width: 74px; height: 74px;
-      margin: 0 auto 1.25rem;
-      border-radius: 50%;
-      display: grid; place-items: center;
-      border: 1.5px solid var(--gold);
-      color: var(--gold);
-      font-family: "Cormorant Garamond", serif;
-      font-size: 2.2rem;
-      box-shadow: 0 0 30px rgba(212,175,95,0.25);
-    }
-
-    h1 {
-      font-family: "Cormorant Garamond", serif;
-      font-weight: 700;
-      font-size: clamp(1.6rem, 4.5vw, 2.6rem);
-      letter-spacing: 0.08em;
-      background: linear-gradient(90deg, var(--gold-light), var(--gold));
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .divider {
-      width: 80px; height: 1px;
-      margin: 1rem auto;
-      background: linear-gradient(90deg, transparent, var(--gold), transparent);
-    }
-
-    h2 {
-      font-weight: 500;
-      font-size: 1.05rem;
-      letter-spacing: 0.35em;
-      text-transform: uppercase;
-    }
-
-    .subtitle {
-      margin-top: 0.5rem;
-      color: var(--muted);
-      font-size: 0.95rem;
-      letter-spacing: 0.1em;
+        radial-gradient(ellipse at 50% 0%, #dce9f8 0, transparent 55%),
+        #f4f7fb;
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
     }
 
     main {
-      width: 100%;
-      max-width: 620px;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
+      width: min(100%, 680px);
+      padding: clamp(28px, 6vw, 54px);
+      background: var(--paper);
+      border: 1px solid rgba(23, 63, 120, .09);
+      border-radius: 24px;
+      box-shadow: 0 24px 70px rgba(25, 52, 89, .11);
     }
 
-    .link-card {
+    .eyebrow {
+      margin: 0 0 12px;
+      color: var(--blue);
+      font-size: .74rem;
+      font-weight: 750;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      color: var(--blue-deep);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.75rem, 5vw, 2.6rem);
+      font-weight: 500;
+      line-height: 1.12;
+      letter-spacing: .015em;
+    }
+
+    .subtitle {
+      margin: 12px 0 0;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .divider {
+      height: 1px;
+      margin: 30px 0 22px;
+      background: var(--line);
+    }
+
+    .links {
+      display: grid;
+      gap: 12px;
+    }
+
+    .portal-link {
+      min-height: 72px;
+      padding: 15px 17px;
       display: flex;
       align-items: center;
-      gap: 1.1rem;
-      padding: 1.15rem 1.35rem;
-      border-radius: 16px;
-      background: var(--card);
-      border: 1px solid var(--card-border);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+      justify-content: space-between;
+      gap: 16px;
+      color: inherit;
       text-decoration: none;
-      color: var(--text);
-      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
-      animation: fadeUp 0.6s ease both;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      transition: border-color .18s ease, background .18s ease, transform .18s ease;
     }
 
-    .link-card:nth-child(1) { animation-delay: 0.1s; }
-    .link-card:nth-child(2) { animation-delay: 0.2s; }
-    .link-card:nth-child(3) { animation-delay: 0.3s; }
-    .link-card:nth-child(4) { animation-delay: 0.4s; }
-    .link-card:nth-child(5) { animation-delay: 0.5s; }
-
-    .link-card:hover,
-    .link-card:focus-visible {
-      transform: translateY(-3px);
-      border-color: var(--gold);
-      background: rgba(212,175,95,0.08);
-      box-shadow: 0 12px 30px rgba(0,0,0,0.35), 0 0 0 1px rgba(212,175,95,0.2);
-      outline: none;
+    .portal-link:hover {
+      transform: translateY(-2px);
+      background: #f8faff;
+      border-color: #b8cbe4;
     }
 
-    .icon {
-      flex-shrink: 0;
-      width: 48px; height: 48px;
-      border-radius: 12px;
-      display: grid; place-items: center;
-      font-size: 1.4rem;
-      background: linear-gradient(135deg, rgba(212,175,95,0.25), rgba(212,175,95,0.05));
-      border: 1px solid rgba(212,175,95,0.3);
+    .portal-link:focus-visible,
+    .copy-link:focus-visible {
+      outline: 3px solid #8eb6e9;
+      outline-offset: 3px;
     }
 
-    .text { flex: 1; min-width: 0; }
-
-    .title {
-      font-family: "Cormorant Garamond", serif;
-      font-weight: 600;
-      font-size: 1.35rem;
-      line-height: 1.2;
+    .link-title {
+      display: block;
+      color: var(--blue-deep);
+      font-weight: 700;
+      line-height: 1.35;
     }
 
-    .desc {
-      font-size: 0.82rem;
+    .link-detail {
+      display: block;
+      margin-top: 4px;
       color: var(--muted);
-      margin-top: 0.2rem;
+      font-size: .83rem;
+      line-height: 1.4;
     }
 
     .arrow {
-      color: var(--gold);
+      flex: 0 0 auto;
+      color: var(--blue);
       font-size: 1.2rem;
-      transition: transform 0.25s ease;
     }
 
-    .link-card:hover .arrow { transform: translateX(4px); }
-
-    footer {
-      margin-top: auto;
-      padding-top: 3rem;
-      font-size: 0.78rem;
+    .footer {
+      margin: 22px 0 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
       color: var(--muted);
-      letter-spacing: 0.1em;
-      text-align: center;
+      font-size: .82rem;
     }
 
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(16px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes fadeDown {
-      from { opacity: 0; transform: translateY(-16px); }
-      to   { opacity: 1; transform: translateY(0); }
+    .copy-link {
+      padding: 8px 11px;
+      color: var(--blue);
+      background: var(--blue-soft);
+      border: 0;
+      border-radius: 9px;
+      font: inherit;
+      font-weight: 650;
+      cursor: pointer;
     }
 
-    @media (max-width: 480px) {
-      .link-card { padding: 1rem; gap: 0.9rem; }
-      .icon { width: 42px; height: 42px; font-size: 1.2rem; }
-      .title { font-size: 1.2rem; }
+    .copy-link:hover { background: #dce8f7; }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+      }
     }
   </style>
 </head>
 <body>
-
-  <header>
-    <div class="emblem">✠</div>
-    <h1>FIGLI DI SANTA MARIA IMMACOLATA</h1>
-    <div class="divider"></div>
-    <h2>Studentato 1</h2>
-    <p class="subtitle">Porto Fiumicino · 2026</p>
-  </header>
-
   <main>
-    <a class="link-card" href="[compendio.congregazionefsmi.workers.dev](https://compendio.congregazionefsmi.workers.dev)" target="_blank" rel="noopener">
-      <div class="icon">📖</div>
-      <div class="text">
-        <div class="title">Compendio</div>
-        <div class="desc">Prayer · Songbook</div>
-      </div>
-      <span class="arrow">→</span>
-    </a>
+    <p class="eyebrow">Figli di Santa Maria Immacolata</p>
+    <h1>Studentato 1</h1>
+    <p class="subtitle">Porto Fiumicino 2026</p>
 
-    <a class="link-card" href="[congregazionefsmi.github.io](https://congregazionefsmi.github.io/orario)" target="_blank" rel="noopener">
-      <div class="icon">🕰️</div>
-      <div class="text">
-        <div class="title">Orario</div>
-        <div class="desc">Liturgia · Cucina · Assistente · Teologia</div>
-      </div>
-      <span class="arrow">→</span>
-    </a>
+    <div class="divider" aria-hidden="true"></div>
 
-    <a class="link-card" href="[congregazionefsmi.github.io](https://congregazionefsmi.github.io/documentistudenti)" target="_blank" rel="noopener">
-      <div class="icon">📂</div>
-      <div class="text">
-        <div class="title">Documenti Studenti</div>
-        <div class="desc">Google Log-in</div>
-      </div>
-      <span class="arrow">→</span>
-    </a>
+    <nav class="links" aria-label="Student portal links">
+      <a class="portal-link"
+         href="https://compendio.congregazionefsmi.workers.dev"
+         target="_blank" rel="noopener noreferrer">
+        <span>
+          <span class="link-title">Compendio</span>
+          <span class="link-detail">Prayer-Songbook</span>
+        </span>
+        <span class="arrow" aria-hidden="true">↗</span>
+      </a>
 
-    <a class="link-card" href="[shmiphilippines.netlify.app](https://shmiphilippines.netlify.app)" target="_blank" rel="noopener">
-      <div class="icon">🇵🇭</div>
-      <div class="text">
-        <div class="title">SHMI Philippines</div>
-        <div class="desc">shmiphilippines.netlify.app</div>
-      </div>
-      <span class="arrow">→</span>
-    </a>
+      <a class="portal-link"
+         href="https://congregazionefsmi.github.io/orario"
+         target="_blank" rel="noopener noreferrer">
+        <span>
+          <span class="link-title">Orario</span>
+          <span class="link-detail">Liturgia · Cucina · Assistente · Teologia</span>
+        </span>
+        <span class="arrow" aria-hidden="true">↗</span>
+      </a>
 
-    <a class="link-card" href="[congregazionefsmi.github.io](https://congregazionefsmi.github.io/dirittocanonico/)" target="_blank" rel="noopener">
-      <div class="icon">⚖️</div>
-      <div class="text">
-        <div class="title">Diritto Canonico</div>
-        <div class="desc">Codex Iuris Canonici</div>
-      </div>
-      <span class="arrow">→</span>
-    </a>
+      <a class="portal-link"
+         href="https://congregazionefsmi.github.io/documentistudenti"
+         target="_blank" rel="noopener noreferrer">
+        <span>
+          <span class="link-title">Documenti Studenti</span>
+          <span class="link-detail">Google Log-in</span>
+        </span>
+        <span class="arrow" aria-hidden="true">↗</span>
+      </a>
+
+      <a class="portal-link"
+         href="https://shmiphilippines.netlify.app"
+         target="_blank" rel="noopener noreferrer">
+        <span>
+          <span class="link-title">SHMI Philippines</span>
+          <span class="link-detail">Visit the Philippines portal</span>
+        </span>
+        <span class="arrow" aria-hidden="true">↗</span>
+      </a>
+
+      <a class="portal-link"
+         href="https://congregazionefsmi.github.io/dirittocanonico/"
+         target="_blank" rel="noopener noreferrer">
+        <span>
+          <span class="link-title">Diritto Canonico</span>
+          <span class="link-detail">Canon Law</span>
+        </span>
+        <span class="arrow" aria-hidden="true">↗</span>
+      </a>
+    </nav>
+
+    <div class="footer">
+      <span>Studentato 1 · Porto Fiumicino</span>
+      <button class="copy-link" type="button" id="copyLink">Copy portal link</button>
+    </div>
   </main>
 
-  <footer>
-    © 2026 · Figli di Santa Maria Immacolata · Studentato 1
-  </footer>
-
+  <script>
+    document.getElementById("copyLink").addEventListener("click", async () => {
+      const button = document.getElementById("copyLink");
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        button.textContent = "Link copied";
+        setTimeout(() => button.textContent = "Copy portal link", 1800);
+      } catch {
+        button.textContent = "Copy unavailable";
+        setTimeout(() => button.textContent = "Copy portal link", 1800);
+      }
+    });
+  </script>
 </body>
 </html>
-

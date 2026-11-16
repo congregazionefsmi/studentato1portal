@@ -8,6 +8,9 @@
 
     <meta name="theme-color" content="#4AAEE8">
     <meta name="mobile-web-app-capable" content="yes">
+    
+    <!-- PWA Manifest Link -->
+    <link rel="manifest" href="manifest.webmanifest">
 
     <style>
         /* ==========================================================
@@ -105,6 +108,7 @@
             text-decoration: none;
             box-shadow: 0 5px 14px rgba(0, 0, 0, .08);
             transition: .25s;
+            cursor: pointer;
         }
 
         .app-grid a:hover {
@@ -171,55 +175,56 @@
         </section>
 
         <nav class="app-grid">
-            <a href="https://compendio.congregazionefsmi.workers.dev" target="_blank" rel="noopener noreferrer">
+            <!-- External Links without target="_blank" so they open inside the standalone app wrapper -->
+            <a href="https://compendio.congregazionefsmi.workers.dev">
                 <span class="emoji">🙏</span>
                 <h3>Compendio</h3>
                 <p>Prayer &amp; Songbook</p>
             </a>
 
-            <a href="https://congregazionefsmi.github.io/orario" target="_blank" rel="noopener noreferrer">
+            <a href="https://congregazionefsmi.github.io/orario">
                 <span class="emoji">🗓️</span>
                 <h3>Orario</h3>
                 <p>Liturgia · Cucina<br>Assistente · Teologia</p>
             </a>
 
-            <a href="https://congregazionefsmi.github.io/documentistudenti" target="_blank" rel="noopener noreferrer">
+            <a href="https://congregazionefsmi.github.io/documentistudenti">
                 <span class="emoji">📂</span>
                 <h3>Documenti Studenti</h3>
                 <p>Google Sign-in</p>
             </a>
 
-            <a href="https://shmiphilippines.netlify.app" target="_blank" rel="noopener noreferrer">
+            <a href="https://shmiphilippines.netlify.app">
                 <span class="emoji">🌏</span>
                 <h3>SHMI Philippines</h3>
                 <p>Province website</p>
             </a>
 
-            <a href="costituzioni.html" target="_blank" rel="noopener noreferrer">
+            <a href="costituzioni.html">
                 <span class="emoji">📜</span>
                 <h3>Costituzioni</h3>
                 <p>Regola di Vita</p>
             </a>
 
-            <a href="direttorio.html" target="_blank" rel="noopener noreferrer">
+            <a href="direttorio.html">
                 <span class="emoji">📘</span>
                 <h3>Direttorio</h3>
                 <p>Direttorio FSMI</p>
             </a>
 
-            <a href="religiosi.html" target="_blank" rel="noopener noreferrer">
+            <a href="religiosi.html">
                 <span class="emoji">👥</span>
                 <h3>I Religiosi</h3>
                 <p>Elenco Fratelli</p>
             </a>
 
-            <a href="about.html" target="_blank" rel="noopener noreferrer">
+            <a href="about.html">
                 <span class="emoji">ℹ️</span>
                 <h3>About</h3>
                 <p>Informazioni App</p>
             </a>
 
-            <a href="https://congregazionefsmi.github.io/dirittocanonico/" target="_blank" rel="noopener noreferrer" class="wide-card">
+            <a href="https://congregazionefsmi.github.io/dirittocanonico/" class="wide-card">
                 <span class="emoji">⚖️</span>
                 <h3>Diritto Canonico</h3>
                 <p>Canon law materials</p>
@@ -234,5 +239,14 @@
         </p>
     </footer>
 
+    <!-- Service Worker Registration -->
+    <script>
+        if ("serviceWorker" in navigator) {
+            window.addEventListener("load", () => {
+                navigator.serviceWorker.register("./service-worker.js")
+                    .catch(err => console.log("SW registration failed: ", err));
+            });
+        }
+    </script>
 </body>
 </html>
